@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bestätigung der Änderungen</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<p style="font-size: x-large;">
+    <a href="/person">Start Seite</a>
+</p>
+<br>
+<h3 style="font-size: x-large;" th:text="${person.get().name}">Person</h3>
+<ul class="list-group">
+    <li class="list-group-item" th:text="'Jahres Lohn: ' + ${person.get().jahresLohn}" >Jahres Lohn</li>
+    <li class="list-group-item" th:text="'Kontakt Daten: ' + ${person.get().kontaktDaten}" >Kontakt Daten</li>
+    <li class="list-group-item" th:text="'Skills: ' + ${person.get().skills}" >Skills</li>
+    <li class="list-group-item">Vergangene Projekte :
+        <ul >
+            <li>Projekt1...</li>
+            <li>Projekt2...</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

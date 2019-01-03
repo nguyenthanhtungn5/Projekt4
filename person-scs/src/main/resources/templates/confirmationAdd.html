@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bestätigung</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<p style="font-size: x-large;">
+    <a href="/person">Start Seite</a>
+</p>
+<br>
+<h3 th:text="${person.getName()}"><b>Name</b></h3>
+<ul class="list-group">
+    <li class="list-group-item" th:text="'Jahres Lohn: ' + ${person.getJahresLohn()}" >Jahres Lohn</li>
+    <li class="list-group-item" th:text="'Kontakt Daten: ' + ${person.getKontaktDaten()}" >Kontakt Daten</li>
+    <li class="list-group-item" th:text="'Skills: ' + ${person.getSkills()}" >Skills</li>
+    <li class="list-group-item">Vergangene Projekte :
+        <ul >
+            <li>Projekt1...</li>
+            <li>Projekt2...</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

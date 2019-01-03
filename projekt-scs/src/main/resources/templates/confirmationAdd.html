@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bestätigung</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<p style="font-size: x-large;">
+    <a href="/projekt">Start Seite</a>
+</p>
+<br>
+<h3 th:text="${projekt.getName()}"><b>Name</b></h3>
+<ul class="list-group">
+    <li class="list-group-item" th:text="'Beschreibung: ' + ${projekt.getDescription()}" >Beschreibung</li>
+    <li class="list-group-item" th:text="'Startdatum: ' + ${projekt.getStartdatum()}" >Startdatum</li>
+    <li class="list-group-item" th:text="'Laufzeit: ' + ${projekt.getLaufzeit()}">Laufzeit</li>
+    <li class="list-group-item">Team:
+        <ul >
+            <li>Person1...</li>
+            <li>Person2...</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

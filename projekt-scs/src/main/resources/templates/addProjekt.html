@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+
+<form action="/projekt/add" method="get">
+    Name: <input type="text" name="name"><br>
+    Beschreibung:         <input type="text" name="description"><br>
+    Budget:   <input type="number" name="budget"><br>
+    Startdatum: <input type="text" name="startdatum"><br>
+    Laufzeit:       <input type="text" name="laufzeit"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+version: "3.1"
+services:
+  proxy:
+    image: nginx:1.15-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./proxy/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy/conf/domain.conf:/etc/nginx/domain.conf:ro
+
+
+  # ========================================
+  # Falls Sie das Person-SCS implementieren
+  # ergänzen Sie diesen Teil
+  persondb:
+    image: mysql:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=personen
+      - MYSQL_PASSWORD=root
+  person:
+    image: person-scs
+    command: sh -c './wait-for db:3306 -- npm start'
+    environment:
+      - DATABASE_HOST=persondb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=personen
+    depends_on:
+      - persondb
+    
+  
+  # ========================================
+  # Falls Sie das Projekt-SCS implementieren
+  # ergänzen Sie diesen Teil
+  projekt:
+    image: projekt-scs
+    command: sh -c './wait-for db:3306 -- npm start'
+    environment:
+      - DATABASE_HOST=projektdb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=projekte
+    depends_on:
+      - projektdb
+    
+  projektdb:
+    image: mysql:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=projekte
+      - MYSQL_PASSWORD=root    
+  # ========================================

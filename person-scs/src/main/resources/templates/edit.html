@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bearbeite Person</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{'/person/saveChanges/' + ${person.get().id}}" method="get">
+    Name:         <input type="text" name="name" th:value="${person.get().name}"><br>
+    Jahreslohn:   <input type="number" name="jahreslohn" th:value="${person.get().jahresLohn}"><br>
+    Kontaktdaten: <input type="email" name="kontaktdaten" th:value="${person.get().kontaktDaten}"><br>
+    Skills:       <input type="text" name="skills" th:value="${person.get().skills}"><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

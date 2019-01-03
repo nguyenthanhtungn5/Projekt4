@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bearbeite Person</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{'/projekt/saveChanges/' + ${projekt.get().id}}" method="get">
+    Name:         <input type="text" name="name" th:value="${projekt.get().name}"><br>
+    Beschreibung: <input type="text" name="description" th:value="${projekt.get().description}"><br>
+    Budget:   <input type="number" name="budget" th:value="${projekt.get().budget}"><br>
+    Startdatum: <input type="text" name="startdatum" th:value="${projekt.get().startdatum}"><br>
+    Laufzeit:       <input type="text" name="laufzeit" th:value="${projekt.get().laufzeit}"><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
