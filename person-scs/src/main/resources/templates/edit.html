@@ -7,12 +7,16 @@
 </head>
 <body>
 <form th:action="@{'/person/saveChanges/' + ${person.get().id}}" method="get">
-    Name:         <input type="text" name="name" th:value="${person.get().name}"><br>
-    Jahreslohn:   <input type="number" name="jahreslohn" th:value="${person.get().jahresLohn}"><br>
-    Kontaktdaten: <input type="email" name="kontaktdaten" th:value="${person.get().kontaktDaten}"><br>
-    Skills:       <input type="text" name="skills" th:value="${person.get().skills}"><br>
-
-    <input type="submit" value="Submit">
+    <div class="col-md-3 mb-3">
+        Name:         <input type="text" name="name" th:value="${person.get().name}"><br>
+        Jahreslohn:   <input type="number" name="jahreslohn" th:value="${person.get().jahresLohn}"><br>
+        Kontaktdaten: <input type="email" name="kontaktdaten" th:value="${person.get().kontaktDaten}"><br>
+        Skills:       <input type="text" name="skills" th:value="${person.get().skills}"><br>
+    </div>
+    <button class="btn btn-primary my-2" type="submit">Submit</button>
 </form>
+<div class="col-md-3 mb-3">
+    <p>© Made by Happy-Gruppe</p>
+</div>
 </body>
 </html>

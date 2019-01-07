@@ -29,8 +29,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')
 	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile("org.springframework.boot:spring-boot-starter-web")
-	//0 Use MySQL Connector-J
-	
+	// Use MySQL Connector-J
 	compile 'mysql:mysql-connector-java'
 	compileOnly('org.projectlombok:lombok')
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
@@ -38,10 +37,4 @@ dependencies {
     testImplementation('io.projectreactor:reactor-test')
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation('org.springframework.boot:spring-boot-starter-webflux')
-	// https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
-	compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.0.0'
-	// https://mvnrepository.com/artifact/org.assertj/assertj-core
-	testCompile group: 'org.assertj', name: 'assertj-core', version: '1.0.0'
-
-
 }

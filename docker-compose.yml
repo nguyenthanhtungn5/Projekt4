@@ -12,15 +12,8 @@ services:
   # ========================================
   # Falls Sie das Person-SCS implementieren
   # ergänzen Sie diesen Teil
-  persondb:
-    image: mysql:latest
-    environment: 
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=personen
-      - MYSQL_PASSWORD=root
   person:
     image: person-scs
-    command: sh -c './wait-for db:3306 -- npm start'
     environment:
       - DATABASE_HOST=persondb
       - DATABASE_USER=root
@@ -28,14 +21,17 @@ services:
       - DATABASE_NAME=personen
     depends_on:
       - persondb
-    
-  
+  persondb:
+    image: mysql:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=personen
+      - MYSQL_PASSWORD=root
   # ========================================
   # Falls Sie das Projekt-SCS implementieren
   # ergänzen Sie diesen Teil
   projekt:
     image: projekt-scs
-    command: sh -c './wait-for db:3306 -- npm start'
     environment:
       - DATABASE_HOST=projektdb
       - DATABASE_USER=root
@@ -43,7 +39,6 @@ services:
       - DATABASE_NAME=projekte
     depends_on:
       - projektdb
-    
   projektdb:
     image: mysql:latest
     environment: 

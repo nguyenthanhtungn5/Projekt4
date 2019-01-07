@@ -17,7 +17,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class PersonController {
 	@Autowired
 	PersonRepository personRepository;

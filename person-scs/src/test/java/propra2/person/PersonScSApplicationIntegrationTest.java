@@ -14,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +66,8 @@ public class PersonScSApplicationIntegrationTest {
 	public void findAllPerson() throws Exception {
 		mockMvc.perform(get(requestURL))
 				.andExpect(status().isOk())
-				.andExpect((ResultMatcher) content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$", hasSize(2))).andExpect((ResultMatcher) jsonPath("$[0].subject", is(EXPECTED_SUBJECT)));
+				.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect((ResultMatcher) jsonPath("$[0].subject", is(EXPECTED_SUBJECT)));
 	}
 	public List<Person> getPersonList() {
 		List<Person> list = new ArrayList<>();

@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-<p style="font-size: x-large;">
-    <a href="/projekt">Start Seite</a>
+<p class="navbar navbar-dark bg-primary">
+    <a href="/projekt" class="navbar-brand d-flex align-items-center">
+        <strong>Projektseite</strong>
+    </a>
 </p>
 <br>
 <div style="padding: 40px;" class="col-xs-6 col-sm-4" th:each="projekt : ${projekte}">
@@ -24,6 +26,9 @@
         </ul>
     </li>
 </ul>
+</div>
+<div class="col-md-3 mb-3">
+    <p>© Made by Happy-Gruppe</p>
 </div>
 </body>
 </html>

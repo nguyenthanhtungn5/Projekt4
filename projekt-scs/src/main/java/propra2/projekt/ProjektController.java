@@ -1,6 +1,5 @@
 package propra2.projekt;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
-@Data
+
 @Controller
 public class ProjektController {
+
+//	@GetMapping("**") // Match all GET Requests
+//	public @ResponseBody String whatever() {
+//		return "Hallo, ich bin das Projekt-SCS";
+//	}
+
 	@Autowired
     ProjektRepository projektRepository;
 
@@ -31,16 +36,14 @@ public class ProjektController {
     }
 
     @RequestMapping("/add")
-    public String addToDatabase(@RequestParam("name") String name,
-                                @RequestParam("description") String description,
-                                @RequestParam("budget") String budget,
+    public String addToDatabase(@RequestParam("titel") String name,
+                                @RequestParam("beschreibung") String description,
                                 @RequestParam("startdatum") String startdatum,
                                 @RequestParam("laufzeit") String laufzeit,
                                 Model model) {
         Projekt newProjekt = new Projekt();
-        newProjekt.setName(name);
-        newProjekt.setDescription(description);
-        newProjekt.setBudget(budget);
+        newProjekt.setTitel(name);
+        newProjekt.setBeschreibung(description);
         newProjekt.setStartdatum(startdatum);
         newProjekt.setLaufzeit(laufzeit);
         projektRepository.save(newProjekt);
@@ -62,17 +65,16 @@ public class ProjektController {
 	}
 
 	@RequestMapping("/saveChanges/{id}")
-    public String saveChanges(@RequestParam("name") String name,
-                              @RequestParam("description") String description,
-                              @RequestParam("budget") String budget,
+    public String saveChanges(@RequestParam("titel") String name,
+                              @RequestParam("beschreibung") String description,
                               @RequestParam("startdatum") String startdatum,
                               @RequestParam("laufzeit") String laufzeit,
                               @PathVariable Long id,
                               Model model) {
         Optional<Projekt> projekt = projektRepository.findById(id);
-        projekt.get().setName(name);
-        projekt.get().setDescription(description);
-        projekt.get().setBudget(budget);
+
+        projekt.get().setTitel(name);
+        projekt.get().setBeschreibung(description);
         projekt.get().setStartdatum(startdatum);
         projekt.get().setLaufzeit(laufzeit);
 
