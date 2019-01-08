@@ -2,12 +2,14 @@ package propra2.person.Controller;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import propra2.person.Model.Event;
 import propra2.person.Model.Person;
 import propra2.person.Model.PersonMitProjekten;
@@ -32,8 +34,9 @@ public class PersonController {
 	@Autowired
     EventReporitory eventReporitory;
 
-    public PersonController(ProjektRepository projektRepository) {
+    public PersonController(ProjektRepository projektRepository, PersonRepository personRepository) {
         this.projektRepository=projektRepository;
+        this.personRepository=personRepository;
     }
 
     @GetMapping("/")
@@ -69,20 +72,22 @@ public class PersonController {
 	    model.addAttribute("projekte", projekte);
 	    return "addPerson";
     }
-    @RequestMapping("/add")
-    public String addToDatabase(@RequestParam("vorname") String vorname,
-                                @RequestParam("nachname") String nachname,
-                                @RequestParam("jahreslohn") String jahreslohn,
-                                @RequestParam("kontaktdaten") String kontaktdaten,
-                                @RequestParam("skills") String[] skills,
-                                @RequestParam("vergangeneProjekte") Long[] vergangeneProjekte,
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addToDatabase(@RequestParam(required=false,value="vorname") String vorname,
+                                @RequestParam(required=false,value="nachname") String nachname,
+                                @RequestParam(required=false,value="jahreslohn") String jahreslohn,
+                                @RequestParam(required=false,value="kontakt") String kontaktdaten,
+                                @RequestParam(required=false,value="skills") String[] skills,
+                                //
+                                // @RequestParam(required=false,value="projekteId") Long[] vergangeneProjekte,
                                 Model model) {
         Person newPerson = new Person();
         personRepository.save(newPerson);
-        Event newEvent = new Event();
-        newEvent.setEvent("create");
-        newEvent.setPersonId(newPerson.getId());
-        eventReporitory.save(newEvent);
+//        Event newEvent = new Event();
+//        newEvent.setEvent("create");
+//        newEvent.setPersonId(newPerson.getId());
+//        eventReporitory.save(newEvent);
         model.addAttribute("person", newPerson);
 
 	    return "confirmationAdd";
